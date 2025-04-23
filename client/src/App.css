@@ -1,0 +1,378 @@
+.App {
+  text-align: center;
+}
+.page{
+  height: 100vh;
+  margin: 5%;
+}
+/* Reset and base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* User Card Container */
+.user-card {
+  background-color: #1e1e2f;
+  color: white;
+  padding: 1rem 2rem;
+  margin: 1.5rem auto;
+  border-radius: 16px;
+  max-width: 700px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Buttons inside user card */
+.user-card button {
+  margin-left: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: #ff4b4b;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.user-card button:hover {
+  background-color: #e63c3c;
+}
+
+/* "See Details" button (optional, can be same as delete style) */
+.details-btn {
+  background-color: #4bbaff !important;
+}
+
+.details-btn:hover {
+  background-color: #4bbaff;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff !important;
+  color: #222;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(16, 16, 16, 0.543);
+  position: relative;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Modal close button */
+.modal-content button {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.4rem;
+  background-color: #f12323;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.modal-content button:hover {
+  background-color: #2e7dd1;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* Style de la liste de produits */
+.product-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Style de la carte produit */
+.card-prod {
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.card-prod:hover {
+  transform: scale(1.05);
+}
+
+.card-prod img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-content h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+}
+
+.card-content p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.card-content button {
+  padding: 8px 12px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-content button:hover {
+  background-color: #444;
+}
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Wrapper du bouton */
+.add-product-wrapper {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Style du bouton */
+.add-product-button {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.add-product-button:hover {
+  background-color: #444;
+  transform: scale(1.05);
+}
+/* NAVBAR CUSTOM STREETWEAR STYLE */
+
+.navbar {
+  background-color: #333333 !important; /* Gris foncé pour un look plus neutre */
+  border-bottom: 2px solid #ff6600 !important; /* Orange vif pour un côté énergique */
+  padding: 15px 30px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  z-index: 999 !important;
+}
+
+.navbar-brand {
+  font-weight: 700 !important;
+  color: #ff6600 !important; /* Orange pour le logo */
+  font-size: 1.6rem !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+}
+
+.nav-link {
+  color: #f0f0f0 !important; /* Blanc cassé pour contraster sans être trop agressif */
+  font-weight: 500 !important;
+  margin-right: 20px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  font-size: 0.95rem !important;
+}
+
+.nav-link:hover {
+  color: #ff6600 !important; /* Effet survol orange */
+  transform: scale(1.05) !important;
+  text-decoration: none !important;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: #ff6600 !important;
+}
+
+.navbar-toggler-icon {
+  background-color: #ff6600 !important;
+  border-radius: 2px !important;
+}
+/* Footer Container */
+footer {
+  background-color: #222 !important;
+  color: #fff !important;
+  text-align: center !important;
+  padding: 20px 0 !important;
+  position: relative !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Card Styling */
+.card {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Header Styling */
+.card-header {
+  background-color: #444 !important;
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+}
+
+/* Blockquote Styling */
+.blockquote {
+  font-style: italic !important;
+  padding: 20px !important;
+  border-left: 5px solid #fff !important;
+}
+
+/* Footer Text */
+.blockquote-footer {
+  font-size: 0.9rem !important;
+  color: #bbb !important;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px !important;
+  }
+
+  .blockquote {
+    font-size: 1rem !important;
+  }
+}
+/* Profile Page Title (h3) */
+.profile-page h3 {
+  font-size: 1.5rem !important;  /* Larger text size */
+  font-weight: 700 !important;    /* Bold text for emphasis */
+  color: #ffffff !important;     /* White text for high contrast */
+  text-align: center !important; /* Centered alignment */
+  margin-top: 20px !important;   /* Top margin to space out from the top */
+  margin-bottom: 20px !important;/* Bottom margin for spacing */
+  letter-spacing: 1px !important; /* Slightly increased letter spacing for better readability */
+  text-transform: capitalize !important; /* Ensure the first letter is capitalized */
+  font-family: 'Arial', sans-serif !important; /* Clean, modern font */
+  padding: 15px 0 !important;   /* Padding for better spacing around the text */
+  background: linear-gradient(45deg, #4c4549, #9f9092) !important; 
+  border-radius: 10px !important; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important; /* Soft shadow for depth */
+  transition: all 0.4s ease-in-out !important; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect */
+.profile-page h3:hover {
+  color: #ffffff !important;            /* Keep text color white */
+  background: linear-gradient(45deg, #4c4549, #9f9092)!important; /* Reverse gradient on hover */
+  transform: scale(1.05) !important;     /* Slightly enlarge the title */
+  box-shadow: 0 8px 25px rgba(75, 64, 70, 0.6) !important; /* Soft pink glow shadow */
+  filter: brightness(1.2) !important;    /* Slight brightness increase on hover */
+}
+
+/* Optional: Glow Effect for Hover */
+.profile-page h3:hover {
+  text-shadow: 0 0 10px #595055, 0 0 20px #645e5f, 0 0 30px #746a70 !important; /* Glowing text effect */
+}
+.description-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  gap: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-content {
+  flex: 1;
+  text-align: left;
+}
+
+.text-content h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.text-content h2 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #666;
+  line-height: 1.5;
+}
+
+.image-content {
+  flex: 0.8;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image-content img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 12px;
+}
