@@ -9,7 +9,7 @@ const ListProd = ({ products, isProfile }) => {
   return (
     <div className="product-list">
       {toDisplay.map((elt) => (
-        <CardProd product={elt} key={elt._id} />
+        <CardProd product={elt} key={elt._id} isProfile={isProfile} />
       ))}
     </div>
   );

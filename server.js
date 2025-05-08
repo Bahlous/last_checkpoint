@@ -19,7 +19,7 @@ connectDB();
 app.use("/api/auth", require("./routes/auth.route"));
 app.use("/api/user", require("./routes/user.route"));
 app.use("/api/product", require("./routes/product.route"));
-// app.use("/api/cart", require("./routes/cart.route"));
+app.use("/api/cart", require("./routes/cart.route"));
 //deployment
 app.use((req,res)=>{
   res.send("API is running...")

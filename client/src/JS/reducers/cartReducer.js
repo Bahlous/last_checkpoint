@@ -1,21 +1,82 @@
+import {
+  LOAD_CART,
+  GET_CART,
+  ADD_TO_CART,
+  UPDATE_CART_ITEM,
+  REMOVE_FROM_CART,
+  CLEAR_CART,
+  FAIL_CART,
+} from "../actionTypes/cartActionTypes";
+
 const initialState = {
-    cartItems: [],
-  };
-  
-  const cartReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case 'LOAD_CART':
-        return { ...state, cartItems: action.payload.map(i => ({
-          _id: i.productId._id,
-          title: i.productId.title,
-          image: i.productId.image,
-          price: i.productId.price,
-          quantity: i.quantity,
-        })) };
-      default:
-        return state;
-    }
-  };
-  
-  export default cartReducer;
-  
+  cartItems: [],
+  loading: false,
+  errors: null,
+};
+
+const cartReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOAD_CART:
+      return { ...state, loading: true };
+
+    case GET_CART:
+      return {
+        ...state,
+        cartItems: action.payload.map((item) => ({
+          _id: item.productId._id,
+          title: item.productId.title,
+          image: item.productId.image,
+          price: item.productId.price,
+          quantity: item.quantity,
+        })),
+        loading: false,
+      };
+
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: action.payload.map((item) => ({
+          _id: item.productId._id,
+          title: item.productId.title,
+          image: item.productId.image,
+          price: item.productId.price,
+          quantity: item.quantity,
+        })),
+        loading: false,
+      };
+
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cartItems: action.payload.map((item) => ({
+          _id: item.productId._id,
+          title: item.productId.title,
+          image: item.productId.image,
+          price: item.productId.price,
+          quantity: item.quantity,
+        })),
+        loading: false,
+      };
+
+    case UPDATE_CART_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item._id === action.payload._id
+            ? { ...item, quantity: action.payload.quantity }
+            : item
+        ),
+      };
+
+    case CLEAR_CART:
+      return { ...state, cartItems: [] };
+
+    case FAIL_CART:
+      return { ...state, errors: action.payload, loading: false };
+
+    default:
+      return state;
+  }
+};
+
+export default cartReducer;
