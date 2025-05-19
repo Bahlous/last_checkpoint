@@ -14,47 +14,28 @@ const initialState = {
   errors: null,
 };
 
+const formatCartItems = (payload) =>
+  Array.isArray(payload)
+    ? payload.map((item) => ({
+        _id: item.productId._id,
+        title: item.productId.title,
+        image: item.productId.image,
+        price: item.productId.price,
+        quantity: item.quantity,
+      }))
+    : [];
+
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CART:
       return { ...state, loading: true };
 
     case GET_CART:
-      return {
-        ...state,
-        cartItems: action.payload.map((item) => ({
-          _id: item.productId._id,
-          title: item.productId.title,
-          image: item.productId.image,
-          price: item.productId.price,
-          quantity: item.quantity,
-        })),
-        loading: false,
-      };
-
     case ADD_TO_CART:
-      return {
-        ...state,
-        cartItems: action.payload.map((item) => ({
-          _id: item.productId._id,
-          title: item.productId.title,
-          image: item.productId.image,
-          price: item.productId.price,
-          quantity: item.quantity,
-        })),
-        loading: false,
-      };
-
     case REMOVE_FROM_CART:
       return {
         ...state,
-        cartItems: action.payload.map((item) => ({
-          _id: item.productId._id,
-          title: item.productId.title,
-          image: item.productId.image,
-          price: item.productId.price,
-          quantity: item.quantity,
-        })),
+        cartItems: formatCartItems(action.payload),
         loading: false,
       };
 

@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { current } from './JS/actions/authAction';
 import Dashboard from './pages/Dashboard';
 import DescriptionProd from './pages/DescriptionProd'
-// import Cart from './pages/Cart';
+import Cart from './pages/Cart';
 
 
 function App() {
@@ -32,13 +32,14 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/prod/:id' element={<DescriptionProd/>}/>
+        <Route path="/cart" element={<Cart />} />
        {user.isAdmin && <Route path='/dash' element={<Dashboard/>}/>}
         {isAuth?
         <Route path='/profile' element={<Profile/>}/> 
       :(
         <>
         (<Route path='/profile' element={<Login/>}/>
-          {/* <Route path="/cart" element={<Cart />} /> */}
+          
           <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>)
         </>

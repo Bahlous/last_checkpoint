@@ -20,7 +20,7 @@ const BareNav = () => {
           <Navbar.Brand href="/">Ecommerce</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/cart">🛒 Cart {totalItems > 0 && `(${totalItems})`}</Nav.Link>
+            <Nav.Link href="/cart">🛒{totalItems > 0 && `(${totalItems})`}</Nav.Link>
             {isAuth ? (
               <>
                 <Nav.Link href="/profile">Profile</Nav.Link>

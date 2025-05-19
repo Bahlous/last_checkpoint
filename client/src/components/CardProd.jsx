@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../JS/actions/cartActions";
 
 const CardProd = ({ product, isProfile }) => {
+  const dispatch = useDispatch();
+
   const [deleted, setDeleted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [editedProduct, setEditedProduct] = useState({ ...product });
+  const [addingToCart, setAddingToCart] = useState(false); // optional loading state
 
   const handleDeleteClick = () => {
     setShowConfirmModal(true);
@@ -32,6 +37,12 @@ const CardProd = ({ product, isProfile }) => {
   const handleSave = () => {
     setIsEditing(false);
     console.log("Product updated:", editedProduct);
+  };
+
+  const handleAddToCart = async () => {
+    setAddingToCart(true);
+    await dispatch(addToCart(product._id));
+    setAddingToCart(false);
   };
 
   if (deleted) return null;
@@ -86,9 +97,18 @@ const CardProd = ({ product, isProfile }) => {
                   </Button>
                 </>
               ) : (
-                <Link to={`/prod/${product._id}`}>
-                  <button>See product</button>
-                </Link>
+                <>
+                  <Link to={`/prod/${product._id}`}>
+                    <button className="me-2">Voir le produit</button>
+                  </Link>
+                  <Button
+                    variant="warning"
+                    onClick={handleAddToCart}
+                    disabled={addingToCart}
+                  >
+                    {addingToCart ? "Ajout..." : "Ajouter au panier"}
+                  </Button>
+                </>
               )}
             </>
           )}
@@ -100,8 +120,12 @@ const CardProd = ({ product, isProfile }) => {
         <div className="modal-overlay" onClick={cancelDelete}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h3>Es-tu sûr de vouloir supprimer ce produit ?</h3>
-            <Button variant="danger" onClick={confirmDelete} className="me-2">Oui</Button>
-            <Button variant="secondary" onClick={cancelDelete}>Non</Button>
+            <Button variant="danger" onClick={confirmDelete} className="me-2">
+              Oui
+            </Button>
+            <Button variant="secondary" onClick={cancelDelete}>
+              Non
+            </Button>
           </div>
         </div>
       )}
